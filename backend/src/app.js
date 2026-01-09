@@ -11,6 +11,8 @@ const rateLimit = require('express-rate-limit');
 
 // Initialize App
 const app = express();
+// Add this line immediately after creating the app
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 3000;
 
 /* =========================================
@@ -93,4 +95,5 @@ app.use((err, req, res, next) => {
    ========================================= */
 app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
+
 });
