@@ -1,0 +1,107 @@
+/* =========================================
+   BASE STYLES (Glass / Light Theme)
+   ========================================= */
+
+body {
+    background-color: var(--color-bg-body);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-sans);
+    line-height: 1.5;
+    font-size: var(--font-size-md);
+    
+    /* Full height to allow gradients to stretch */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    /* THE BACKGROUND MESH 
+       Essential for Glassmorphism. We add soft, large colorful blobs 
+       behind the content so the "frosted glass" cards have something to blur.
+    */
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(129, 140, 248, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(52, 211, 153, 0.05) 0px, transparent 50%);
+    background-attachment: fixed; /* Keeps the gradient still while scrolling */
+}
+
+/* =========================================
+   LAYOUT UTILITIES
+   ========================================= */
+
+/* 1. Default Container */
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    position: relative;
+}
+
+/* 2. Narrow Container (Mobile App Feel) 
+   Used for: Profile Page, Login, Register
+*/
+.container-narrow {
+    max-width: var(--container-width);
+}
+
+/* 3. Wide Container (Desktop Website Feel) 
+   Used for: Landing Page (index.html), Admin Dashboard
+*/
+.container-wide {
+    max-width: var(--container-width-pc);
+}
+
+/* =========================================
+   TYPOGRAPHY BASE
+   ========================================= */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
+    color: var(--color-text-primary);
+    font-weight: 700;
+    letter-spacing: -0.02em; /* Tighter tracking for modern feel */
+    margin-bottom: var(--spacing-sm);
+}
+
+h1 { font-size: var(--font-size-2xl); line-height: 1.1; }
+h2 { font-size: var(--font-size-xl); }
+h3 { font-size: var(--font-size-lg); }
+
+p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-fast);
+}
+
+/* =========================================
+   UTILITIES
+   ========================================= */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-xs { font-size: var(--font-size-xs); }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+.hidden { display: none !important; }
+
+/* Scrollbar Styling (Webkit) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.2);
+}

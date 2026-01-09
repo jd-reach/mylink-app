@@ -1,0 +1,78 @@
+:root {
+    /* =========================================
+       1. COLOR PALETTE (Premium Light / Glass Theme)
+       ========================================= */
+    
+    /* Brand Colors - Deep Indigo & Soft Violet */
+    --color-primary: #4f46e5;       /* Apple-like vivid Blue/Indigo */
+    --color-primary-hover: #4338ca; /* Slightly darker for hover */
+    --color-accent: #818cf8;        /* Soft Violet for gradients */
+    
+    /* Backgrounds */
+    --color-bg-body: #f5f5f7;       /* "Apple Grey" - Very light grey */
+    --color-bg-card: rgba(255, 255, 255, 0.65); /* Translucent White (Frosted Glass) */
+    --color-bg-card-hover: rgba(255, 255, 255, 0.85);
+    --color-bg-input: rgba(255, 255, 255, 0.5);
+    --color-bg-surface: #ffffff;    /* Solid white for heavy opaque elements */
+    
+    /* Text Colors */
+    --color-text-primary: #1d1d1f;  /* "Apple Black" - Not pure black, soft dark grey */
+    --color-text-secondary: #86868b;/* Muted grey for subtext */
+    --color-text-inverse: #ffffff;  /* White text on primary buttons */
+
+    /* Semantic Colors */
+    --color-success: #34c759;       /* iOS Green */
+    --color-error: #ff3b30;         /* iOS Red */
+    --color-warning: #ffcc00;       /* iOS Yellow */
+
+    /* =========================================
+       2. GLASSMORPHISM & VISUAL EFFECTS
+       ========================================= */
+    --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07); /* Very subtle, premium shadow */
+    --backdrop-blur: blur(20px);    /* Heavy blur for that "VisionOS" feel */
+    
+    --shadow-sm: 0 2px 5px rgba(0,0,0,0.05);
+    --shadow-md: 0 5px 15px rgba(0,0,0,0.08);
+    --shadow-lg: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+    --shadow-glow: 0 0 20px rgba(79, 70, 229, 0.4); /* Glow for primary buttons */
+
+    /* =========================================
+       3. TYPOGRAPHY
+       ========================================= */
+    /* System UI fonts feel the most native/premium on Apple devices */
+    --font-family-sans: -apple-system, BlinkMacSystemFont, "San Francisco", "Inter", "Segoe UI", Roboto, sans-serif;
+    --font-family-heading: -apple-system, BlinkMacSystemFont, "San Francisco", "Poppins", sans-serif;
+
+    /* Scale */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;     /* 16px */
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 2.5rem;  /* Large hero text */
+    
+    /* =========================================
+       4. SPACING & LAYOUT (Responsive)
+       ========================================= */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 3rem;
+    
+    /* Constraints */
+    --container-width: 440px;     /* Tighter mobile view (Standard Link-in-bio width) */
+    --container-width-pc: 1024px; /* Wider constraint for Desktop Landing Pages */
+
+    /* Shapes */
+    --border-radius-sm: 8px;
+    --border-radius-md: 18px;     /* Smooth Apple-like corners */
+    --border-radius-lg: 28px;
+    --border-radius-pill: 50px;   /* For Buttons */
+    --border-radius-circle: 50%;
+
+    /* Animation */
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* "Springy" feel */
+}

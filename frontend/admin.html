@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dashboard | MyLink</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+
+    <style>
+        /* DASHBOARD SPECIFIC STYLES */
+        .admin-layout {
+            padding-top: 20px;
+            padding-bottom: 60px;
+        }
+
+        /* Tabs Navigation */
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            padding: 6px;
+            background: rgba(0,0,0,0.05); /* Light grey pill container */
+            border-radius: 50px;
+            width: fit-content;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: var(--color-primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        /* Content Areas */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* Links List */
+        .link-item-card {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: var(--border-radius-md);
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s;
+        }
+
+        .link-item-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .link-info h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+            color: var(--color-text-primary);
+        }
+        
+        .link-url {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            word-break: break-all;
+        }
+
+        /* Avatar Preview */
+        .profile-avatar-sm {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 2px solid white;
+            box-shadow: var(--shadow-md);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="container container-wide navbar">
+        <div class="brand-logo">
+            <div class="brand-icon"><i class="fa-solid fa-link"></i></div>
+            <span>Admin</span>
+        </div>
+        <div class="nav-links">
+            <a id="view-live-btn" target="_blank" class="btn btn-primary btn-sm">
+                View Live <i class="fa-solid fa-external-link-alt"></i>
+            </a>
+            <button class="btn btn-text" id="logout-btn">Log Out</button>
+        </div>
+    </nav>
+
+    <main class="container container-narrow admin-layout">
+        
+        <div class="text-center" style="display: flex; justify-content: center;">
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="links">Links</button>
+                <button class="tab-btn" data-tab="profile">Appearance</button>
+            </div>
+        </div>
+
+        <section id="tab-links" class="tab-content active">
+            
+            <button class="btn btn-primary btn-lg" style="margin-bottom: 24px;" onclick="toggleAddLinkForm()">
+                <i class="fa-solid fa-plus"></i> Add New Link
+            </button>
+
+            <div id="add-link-form" class="glass-card hidden" style="margin-bottom: 24px; border-left: 4px solid var(--color-primary);">
+                <h3 style="margin-bottom: 16px;">Add New Link</h3>
+                <div class="form-group">
+                    <input type="text" id="link-title" class="form-input" placeholder="Title (e.g. My Portfolio)">
+                </div>
+                <div class="form-group">
+                    <input type="url" id="link-url" class="form-input" placeholder="URL (https://...)">
+                </div>
+                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                    <button class="btn btn-text" onclick="toggleAddLinkForm()">Cancel</button>
+                    <button class="btn btn-primary btn-sm" id="save-link-btn">Save Link</button>
+                </div>
+            </div>
+
+            <div class="links-manager">
+                <div class="text-center" style="padding: 40px; opacity: 0.6;">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i> Loading...
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-profile" class="tab-content">
+            <div class="glass-card">
+                <h3 style="margin-bottom: 24px;">Profile Details</h3>
+                
+                <div class="form-group text-center">
+                    <img src="" class="profile-avatar-sm" id="admin-avatar-preview">
+                    <p class="text-xs text-secondary" style="margin-bottom: 10px;">Max size: 200KB</p>
+                    
+                    <input type="file" id="avatar-upload" accept="image/*" hidden>
+                    <button class="btn btn-text btn-sm" onclick="document.getElementById('avatar-upload').click()">
+                        <i class="fa-solid fa-camera"></i> Change Image
+                    </button>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" id="settings-username" class="form-input" disabled style="background-color: rgba(0,0,0,0.02); color: var(--color-text-secondary);">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Bio</label>
+                    <textarea id="settings-bio" class="form-input" rows="4" placeholder="Tell the world about yourself..."></textarea>
+                </div>
+
+                <button class="btn btn-primary btn-lg" id="save-profile-btn">Save Changes</button>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script> <script src="js/auth.js"></script>  <script src="js/admin.js"></script> <script>
+        // Tab Switching Logic
+        const tabs = document.querySelectorAll('.tab-btn');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+                
+                // Add active to clicked
+                tab.classList.add('active');
+                document.getElementById(`tab-${tab.dataset.tab}`).classList.add('active');
+            });
+        });
+
+        function toggleAddLinkForm() {
+            document.getElementById('add-link-form').classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

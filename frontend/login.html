@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Login | MyLink</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+
+    <style>
+        /* Specific layout for Auth pages: Center vertically */
+        .auth-layout {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .auth-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+    </style>
+</head>
+<body class="auth-layout">
+
+    <nav class="container container-wide navbar">
+        <a href="index.html" class="brand-logo">
+            <div class="brand-icon"><i class="fa-solid fa-link"></i></div>
+            <span>MyLink</span>
+        </a>
+        <a href="index.html" class="btn btn-text">
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
+        </a>
+    </nav>
+
+    <main class="auth-content">
+        <div class="container container-narrow">
+            <div class="glass-card">
+                
+                <div class="text-center" style="margin-bottom: 2rem;">
+                    <h2>Welcome Back</h2>
+                    <p>Enter your credentials to access your account.</p>
+                </div>
+
+                <form id="login-form">
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-input" placeholder="name@company.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" id="password" class="form-input" placeholder="••••••••" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        Log In <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="text-center mt-lg">
+                    <p style="font-size: 0.9rem;">
+                        Don't have an account? 
+                        <a href="register.html" style="color: var(--color-primary); font-weight: 600;">Sign Up</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container container-wide footer-content">
+            <div class="copyright">
+                &copy; 2024 MyLink. Developed by <strong>Jaiho Reach</strong>.
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="mailto:support@mylink.app">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

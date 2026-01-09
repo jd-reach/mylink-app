@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="One link for everything. Share your socials, resources, and portfolio with a single aesthetic link.">
+    
+    <title>MyLink | Simplify Your Digital Presence</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+
+    <style>
+        /* LANDING SPECIFIC STYLES 
+           These are only used here, so we keep them inline to keep CSS files clean.
+        */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 60px; /* Top padding accounts for fixed header if needed */
+            min-height: 80vh;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive text size */
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(135deg, #1d1d1f 0%, #4f46e5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin-bottom: var(--spacing-xl);
+            font-weight: 400;
+        }
+
+        /* The Search Bar Group */
+        .cta-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            max-width: 480px;
+        }
+
+        @media (min-width: 768px) {
+            .cta-group {
+                flex-direction: row;
+                background: white;
+                padding: 8px;
+                border-radius: 50px;
+                box-shadow: var(--shadow-lg);
+                border: 1px solid rgba(0,0,0,0.05);
+            }
+            
+            .cta-group .input-prefix-wrapper {
+                margin-bottom: 0;
+                border: none;
+                background: transparent;
+                box-shadow: none;
+                padding-left: 20px;
+            }
+
+            .cta-group .btn {
+                flex-shrink: 0; /* Stop button from squishing */
+            }
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            padding: var(--spacing-xl) 0;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="container container-wide navbar">
+        <div class="brand-logo">
+            <div class="brand-icon">
+                <i class="fa-solid fa-link"></i>
+            </div>
+            <span>MyLink</span>
+        </div>
+        <div class="nav-links">
+            <a href="login.html" class="btn btn-text">Log In</a>
+            <a href="register.html" class="btn btn-primary btn-sm">Sign Up Free</a>
+        </div>
+    </nav>
+
+    <main class="container container-wide">
+        
+        <section class="hero-section">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                v1.0 Now Available
+            </div>
+
+            <h1 class="hero-title">
+                One Link.<br>
+                Infinite Possibilities.
+            </h1>
+
+            <p class="hero-subtitle">
+                The only link you'll ever need. Connect your audience to all of your content with a single, beautiful profile.
+            </p>
+
+            <div class="cta-group">
+                <div class="input-prefix-wrapper">
+                    <span class="prefix">mylink.app/</span>
+                    <input type="text" placeholder="username" class="username-input" id="hero-input">
+                </div>
+                <button onclick="goToRegister()" class="btn btn-primary">
+                    Claim URL
+                </button>
+            </div>
+        </section>
+
+        <section class="features-grid">
+            <div class="feature-card glass-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <h3>Blazing Fast</h3>
+                <p>Optimized for instant loading times on any device, anywhere in the world.</p>
+            </div>
+
+            <div class="feature-card glass-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-palette"></i>
+                </div>
+                <h3>Fully Custom</h3>
+                <p>Control your brand identity with custom bios, images, and pinned links.</p>
+            </div>
+
+            <div class="feature-card glass-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3>Secure by Design</h3>
+                <p>Your data is encrypted and protected with industry-standard security.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container container-wide footer-content">
+            <div class="copyright">
+                &copy; 2024 MyLink. Developed by <strong>Jaiho Reach</strong>.
+            </div>
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Privacy</a>
+                <a href="mailto:support@mylink.app">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script>
+        // Simple script to pass the username to the register page
+        function goToRegister() {
+            const input = document.getElementById('hero-input');
+            const val = input.value.trim();
+            if(val) {
+                // If user typed 'steve', go to register.html?user=steve
+                // (We will need to add logic in register.js to read this, but that's a nice bonus)
+                window.location.href = `register.html?u=${val}`;
+            } else {
+                window.location.href = 'register.html';
+            }
+        }
+
+        // Focus styling for the input wrapper
+        const input = document.getElementById('hero-input');
+        const wrapper = document.querySelector('.input-prefix-wrapper');
+        
+        input.addEventListener('focus', () => wrapper.classList.add('focused'));
+        input.addEventListener('blur', () => wrapper.classList.remove('focused'));
+    </script>
+</body>
+</html>
